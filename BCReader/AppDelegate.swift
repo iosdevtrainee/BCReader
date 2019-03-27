@@ -1,12 +1,5 @@
-//
-//  AppDelegate.swift
-//  BCReader
-//
-//  Created by iosdevrookie on 3/27/19.
-//  Copyright © 2019 iosdevrookie. All rights reserved.
-//
-
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +8,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+     FirebaseApp.configure()
         return true
     }
 
