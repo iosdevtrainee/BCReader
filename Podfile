@@ -10,6 +10,7 @@ target 'BCReader' do
   pod 'Firebase/MLVision'
   pod 'Firebase/MLVisionTextModel'
   pod 'Firebase/Database'
+  pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
   pod 'Kingfisher'
   pod 'Toucan'
