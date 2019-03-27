@@ -1,10 +1,3 @@
-//
-//  StorageManager.swift
-//
-//  Created by Alex Paul on 2/17/19.
-//  Copyright © 2019 Alex Paul. All rights reserved.
-//
-
 import Foundation
 import FirebaseStorage
 
