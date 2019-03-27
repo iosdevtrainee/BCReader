@@ -5,7 +5,7 @@ import Firebase
 struct BCDataKeys {
   static let CollectionKey = "BCData"
   static let BCDIdKey = "Id"
-  static let FirstNameKey = "name"
+  static let NameKey = "name"
   static let LastNameKey = "lastname"
   static let EmailKey = "email"
   static let PhoneNumber = "number"
@@ -36,6 +36,7 @@ final class DBService {
       .document(reviewer.id)
       .setData([ BCDataKeys.CollectionKey : reviewer.id,
                                             BCDataKeys.EmailKey       : reviewer.email,
+                                            BCDataKeys.NameKey : reviewer.name,
                                             BCDataKeys.PhotoURLKey    : reviewer.photoURL ?? "",
                                             BCDataKeys.CreatedAt  : reviewer.createdAt,
                                             BCDataKeys.PhoneNumber: reviewer.phoneNumber,

@@ -1,17 +1,28 @@
 import UIKit
 import Kingfisher
+import FirebaseMLVision
 
 class ViewController: UIViewController {
     
     var contacts = [BCData]()
     @IBOutlet weak var tableView: UICollectionView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         getFBData()
+        let vision = Vision.vision()
+        var textRecognizer = vision.onDeviceTextRecognizer()
+        let options = VisionCloudTextRecognizerOptions()
+      //  options.languageHints = ["en", "hi"]
+        textRecognizer = vision.cloudTextRecognizer(options: options)
         tableView.delegate = self
         tableView.dataSource = self 
+    }
+    
+    
+    @IBAction func addBCData(_ sender: UIBarButtonItem) {
+        print("add button pressed")
+        
     }
     
     func getFBData() {

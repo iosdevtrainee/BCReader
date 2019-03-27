@@ -73,7 +73,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="BC Reader" id="PjI-Py-W3U"/>
+                    <navigationItem key="navigationItem" title="BC Reader" id="PjI-Py-W3U">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qIc-xC-cj6">
+                            <connections>
+                                <action selector="addBCData:" destination="BYZ-38-t0r" id="oIG-mv-5q3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="CVl-3O-7oI" id="ccD-PG-BhA"/>
                     </connections>
