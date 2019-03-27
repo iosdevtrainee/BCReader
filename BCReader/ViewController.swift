@@ -21,7 +21,6 @@ class ViewController: UIViewController {
     
     
     @IBAction func addBCData(_ sender: UIBarButtonItem) {
-        print("add button pressed")
         
     }
     

@@ -88,6 +88,62 @@
             </objects>
             <point key="canvasLocation" x="736.23188405797111" y="418.52678571428572"/>
         </scene>
+        <!--Camera View Controller-->
+        <scene sceneID="jyJ-AJ-hip">
+            <objects>
+                <viewController storyboardIdentifier="CameraViewController" id="TTS-95-8E3" customClass="CameraViewController" customModule="BCReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WDi-mb-hXu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RtW-5x-eKh">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OzY-jU-i4m">
+                                        <rect key="frame" x="182" y="746" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="0CH-mH-8WL"/>
+                                            <constraint firstAttribute="width" constant="50" id="Cqg-EU-tuy"/>
+                                        </constraints>
+                                        <state key="normal" image="circle"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4B-2g-zFp">
+                                        <rect key="frame" x="22" y="22" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="9gY-mc-8hv"/>
+                                            <constraint firstAttribute="width" constant="44" id="wM0-l9-6qw"/>
+                                        </constraints>
+                                        <state key="normal" title="Cance" image="cancel"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="OzY-jU-i4m" firstAttribute="centerX" secondItem="RtW-5x-eKh" secondAttribute="centerX" id="CUl-Lq-jFl"/>
+                                    <constraint firstItem="F4B-2g-zFp" firstAttribute="leading" secondItem="RtW-5x-eKh" secondAttribute="leading" constant="22" id="GQg-SV-9lA"/>
+                                    <constraint firstAttribute="bottom" secondItem="OzY-jU-i4m" secondAttribute="bottom" constant="22" id="QQw-oG-IgQ"/>
+                                    <constraint firstItem="F4B-2g-zFp" firstAttribute="top" secondItem="RtW-5x-eKh" secondAttribute="top" constant="22" id="SbF-Q3-edU"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="RtW-5x-eKh" firstAttribute="bottom" secondItem="tzG-bl-A0m" secondAttribute="bottom" id="0fP-AQ-8kL"/>
+                            <constraint firstAttribute="trailing" secondItem="RtW-5x-eKh" secondAttribute="trailing" id="B74-lk-s0d"/>
+                            <constraint firstItem="RtW-5x-eKh" firstAttribute="leading" secondItem="WDi-mb-hXu" secondAttribute="leading" id="G7r-8x-AUI"/>
+                            <constraint firstItem="RtW-5x-eKh" firstAttribute="top" secondItem="tzG-bl-A0m" secondAttribute="top" id="xnd-5I-0Ka"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tzG-bl-A0m"/>
+                    </view>
+                    <connections>
+                        <outlet property="cancel" destination="F4B-2g-zFp" id="hAL-wV-F1d"/>
+                        <outlet property="previewLayer" destination="RtW-5x-eKh" id="Xkc-Bw-fIq"/>
+                        <outlet property="shutterButton" destination="OzY-jU-i4m" id="5xe-so-bUi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a1e-5R-eNx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1507.2463768115942" y="420.53571428571428"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="lvN-ob-idO">
             <objects>
@@ -107,4 +163,8 @@
             <point key="canvasLocation" x="-70" y="419"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cancel" width="96" height="96"/>
+        <image name="circle" width="100" height="100"/>
+    </resources>
 </document>
