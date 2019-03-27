@@ -2,25 +2,19 @@ import Foundation
 import FirebaseFirestore
 import Firebase
 
-struct ReviewersCollectionKeys {
-  static let CollectionKey = "reviewers"
-  static let ReviewerIdKey = "reviewerId"
-  static let DisplayNameKey = "displayName"
-  static let FirstNameKey = "firstName"
-  static let LastNameKey = "lastName"
+struct BCDataKeys {
+  static let CollectionKey = "BCData"
+  static let BCDIdKey = "Id"
+  static let FirstNameKey = "name"
+  static let LastNameKey = "lastname"
   static let EmailKey = "email"
+  static let PhoneNumber = "number"
   static let PhotoURLKey = "photoURL"
-  static let JoinedDateKey = "joinedDate"
+  static let CreatedAt = "createdAt"
+static let Company = "company"
 }
 
-struct ReviewsCollectionKeys {
-  static let CollectionKey = "reviews"
-  static let ReviewDescritionKey = "ReviewDescription"
-  static let ReviewerIdKey = "reviewerId"
-  static let CreatedDateKey = "createdDate"
-  static let DocumentIdKey = "documentId"
-  static let ImageURLKey = "imageURL"
-}
+
 
 final class DBService {
   private init() {}
@@ -34,28 +28,29 @@ final class DBService {
   }()
   
   static public var generateDocumentId: String {
-    return firestoreDB.collection(ReviewersCollectionKeys.CollectionKey).document().documentID
+    return firestoreDB.collection(BCDataKeys.CollectionKey).document().documentID
   }
   
-//  static public func createReviewer(reviewer: Reviewer, completion: @escaping (Error?) -> Void) {
-//    firestoreDB.collection(ReviewersCollectionKeys.CollectionKey)
-//      .document(reviewer.reviewerId)
-//      .setData([ ReviewsCollectionKeys.ReviewerIdKey : reviewer.reviewerId,
-//                                            ReviewersCollectionKeys.DisplayNameKey : reviewer.displayName,
-//                                            ReviewersCollectionKeys.EmailKey       : reviewer.email,
-//                                            ReviewersCollectionKeys.PhotoURLKey    : reviewer.photoURL ?? "",
-//                                            ReviewersCollectionKeys.JoinedDateKey  : reviewer.joinedDate
-//    ]) { (error) in
-//      if let error = error {
-//        completion(error)
-//      } else {
-//        completion(nil)
-//      }
-//    }
-//  }
+  static public func createBCData(reviewer: BCData, completion: @escaping (Error?) -> Void) {
+    firestoreDB.collection(BCDataKeys.CollectionKey)
+      .document(reviewer.id)
+      .setData([ BCDataKeys.CollectionKey : reviewer.id,
+                                            BCDataKeys.EmailKey       : reviewer.email,
+                                            BCDataKeys.PhotoURLKey    : reviewer.photoURL ?? "",
+                                            BCDataKeys.CreatedAt  : reviewer.createdAt,
+                                            BCDataKeys.PhoneNumber: reviewer.phoneNumber,
+                                            BCDataKeys.Company: reviewer.company
+    ]) { (error) in
+      if let error = error {
+        completion(error)
+      } else {
+        completion(nil)
+      }
+    }
+  }
   
-//  static public func postReview(review: Review) {
-//    firestoreDB.collection(ReviewsCollectionKeys.CollectionKey)
+//  static public func postReview(review: BCData) {
+//    firestoreDB.collection(BCDataKeys.CollectionKey)
 //      .document(review.documentId).setData([
 //                                          ReviewsCollectionKeys.CreatedDateKey     : review.createdDate,
 //                                          ReviewsCollectionKeys.ReviwerId          : review.reviewerId,

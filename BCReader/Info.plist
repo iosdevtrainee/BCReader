@@ -34,6 +34,12 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Allow the camera usage to read a business card </string>
+	<key>NSContactsUsageDescription</key>
+	<string>Allow this app access to contacts </string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Allow Access to your location</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
