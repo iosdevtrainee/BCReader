@@ -12,7 +12,7 @@
         <!--Save View Controller-->
         <scene sceneID="GFv-d1-jWs">
             <objects>
-                <tableViewController id="wD8-bd-nwg" customClass="SaveViewController" customModule="BCReader" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SaveVC" id="wD8-bd-nwg" customClass="SaveViewController" customModule="BCReader" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="S4U-60-3sP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -187,6 +187,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="bcimageView" destination="DPa-TR-33b" id="Mxg-hA-MDl"/>
                         <outlet property="companyTextField" destination="D6F-kz-4XU" id="gfQ-nL-vx5"/>
                         <outlet property="emailTextField" destination="rUj-U4-F2h" id="yIa-k2-0RJ"/>
                         <outlet property="nameTextField" destination="ZNi-Dx-YcS" id="s6a-PE-NYu"/>
