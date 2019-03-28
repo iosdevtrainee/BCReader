@@ -6,30 +6,52 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     @IBOutlet weak var cancel: UIButton!
     @IBOutlet weak var shutterButton: UIButton!
     @IBOutlet weak var previewLayer: AVCapturePreviewView!
+
     
     @IBOutlet weak var previewView: AVCapturePreviewView!
     
     private var avSession = AVCaptureSession()
+
     
     private var backCamera: AVCaptureDevice?
     private var frontCamera: AVCaptureDevice?
     private var currentCamera: AVCaptureDevice?
     private var videoOrientation: AVCaptureVideoOrientation?
-    
     private var photoOutput: AVCapturePhotoOutput?
     private let photoSessionPreset = AVCaptureSession.Preset.photo
-    
     private let sessionQueue = DispatchQueue(label: "session Queue")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        configurePreview(view: previewLayer)
+        self.cancel.addTarget(self, action: #selector(cancelSelected), for: .touchUpInside)
+        self.shutterButton.addTarget(self, action: #selector(takePhoto) , for: .touchUpInside)
         configurePreview(view: previewView)
         self.cancel.addTarget(self, action: #selector(cancelSelected), for: .touchUpInside)
         self.shutterButton.addTarget(self, action:#selector(takePhoto) , for: .touchUpInside)
+
     }
     
     @objc func cancelSelected() {
-        dismiss(animated: true)
+
+      dismiss(animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        AppUtility.lockOrientation(.landscape)
+        // Or to rotate and lock
+        // AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Don't forget to reset when view is being removed
+        AppUtility.lockOrientation(.all)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

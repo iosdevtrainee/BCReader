@@ -4,7 +4,11 @@ import FirebaseMLVision
 
 class ViewController: UIViewController {
     
-    var contacts = [BCData]()
+    var contacts = [BCData]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     @IBOutlet weak var tableView: UICollectionView!
     
     override func viewDidLoad() {
@@ -38,15 +42,25 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       return 1 
+       return contacts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainViewCell", for: indexPath) as? MainViewCell else { return UICollectionViewCell() }
-        cell.bcImage.image = #imageLiteral(resourceName: "placeholder-image-2 (1)")
-        cell.nameLabel.text = "Test"
+        let contactData = contacts[indexPath.row]
+        cell.bcImage.kf.setImage(with: URL(string: (contactData.photoURL?.absoluteString)!))
+        cell.nameLabel.text = contactData.name
+        //cell.nameLabel.text = "Test"
         return cell
       
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard.init(name: "Detail", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+       let contactData = contacts[indexPath.row]
+        viewController.contact = contactData
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
 }
@@ -54,5 +68,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 400, height: 730)
+        
     }
 }

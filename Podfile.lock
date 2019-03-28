@@ -1,4 +1,10 @@
 PODS:
+  - BoringSSL-GRPC (0.0.2):
+    - BoringSSL-GRPC/Implementation (= 0.0.2)
+    - BoringSSL-GRPC/Interface (= 0.0.2)
+  - BoringSSL-GRPC/Implementation (0.0.2):
+    - BoringSSL-GRPC/Interface (= 0.0.2)
+  - BoringSSL-GRPC/Interface (0.0.2)
   - Firebase/Core (5.16.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.5.0)
@@ -7,6 +13,9 @@ PODS:
   - Firebase/Database (5.16.0):
     - Firebase/CoreOnly
     - FirebaseDatabase (= 5.1.0)
+  - Firebase/Firestore (5.16.0):
+    - Firebase/CoreOnly
+    - FirebaseFirestore (= 1.0.0)
   - Firebase/MLVision (5.16.0):
     - Firebase/CoreOnly
     - FirebaseMLVision (= 0.14.0)
@@ -32,6 +41,21 @@ PODS:
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 5.2)
     - leveldb-library (~> 1.18)
+  - FirebaseFirestore (1.0.0):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 5.2)
+    - FirebaseFirestore/abseil-cpp (= 1.0.0)
+    - "gRPC-C++ (= 0.0.6)"
+    - leveldb-library (~> 1.20)
+    - nanopb (~> 0.3.901)
+    - Protobuf (~> 3.1)
+  - FirebaseFirestore/abseil-cpp (1.0.0):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 5.2)
+    - "gRPC-C++ (= 0.0.6)"
+    - leveldb-library (~> 1.20)
+    - nanopb (~> 0.3.901)
+    - Protobuf (~> 3.1)
   - FirebaseInstanceID (3.4.0):
     - FirebaseCore (~> 5.2)
     - GoogleUtilities/Environment (~> 5.3)
@@ -94,6 +118,22 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (5.3.7):
     - GoogleUtilities/Logger
+  - "gRPC-C++ (0.0.6)":
+    - "gRPC-C++/Implementation (= 0.0.6)"
+    - "gRPC-C++/Interface (= 0.0.6)"
+  - "gRPC-C++/Implementation (0.0.6)":
+    - "gRPC-C++/Interface (= 0.0.6)"
+    - gRPC-Core (= 1.17.0)
+    - nanopb (~> 0.3)
+  - "gRPC-C++/Interface (0.0.6)"
+  - gRPC-Core (1.17.0):
+    - gRPC-Core/Implementation (= 1.17.0)
+    - gRPC-Core/Interface (= 1.17.0)
+  - gRPC-Core/Implementation (1.17.0):
+    - BoringSSL-GRPC (= 0.0.2)
+    - gRPC-Core/Interface (= 1.17.0)
+    - nanopb (~> 0.3)
+  - gRPC-Core/Interface (1.17.0)
   - GTMSessionFetcher (1.2.1):
     - GTMSessionFetcher/Full (= 1.2.1)
   - GTMSessionFetcher/Core (1.2.1)
@@ -112,6 +152,7 @@ PODS:
 DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
+  - Firebase/Firestore
   - Firebase/MLVision
   - Firebase/MLVisionTextModel
   - Firebase/Storage
@@ -120,11 +161,13 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - BoringSSL-GRPC
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuthInterop
     - FirebaseCore
     - FirebaseDatabase
+    - FirebaseFirestore
     - FirebaseInstanceID
     - FirebaseMLCommon
     - FirebaseMLVision
@@ -135,6 +178,8 @@ SPEC REPOS:
     - GoogleMobileVision
     - GoogleToolboxForMac
     - GoogleUtilities
+    - "gRPC-C++"
+    - gRPC-Core
     - GTMSessionFetcher
     - Kingfisher
     - leveldb-library
@@ -143,11 +188,13 @@ SPEC REPOS:
     - Toucan
 
 SPEC CHECKSUMS:
+  BoringSSL-GRPC: 2a230d9cd93e7ce39916044f645cebb31f37dde6
   Firebase: 749a8ff4962f9d8c79dda1966de20f6f77583d67
   FirebaseAnalytics: d35d47c03c50c73c14a7fd31463c5775843e78a9
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
   FirebaseCore: ea2d1816723ef21492b8e9113303e1350db5e08c
   FirebaseDatabase: 23acb0c53cd4d4070a427b60100b2e4aaa97c45d
+  FirebaseFirestore: 6f2b93b4f7bb8416628142763c91ccc00fa04c86
   FirebaseInstanceID: 97ea7a5dca9afd72c79bfcdddb7a44aa1cbb42a1
   FirebaseMLCommon: d8a789e36a7faa175b1a5d1139e7fc7323c8db7b
   FirebaseMLVision: 07c0da3ceaa5ecde621528a985748d6098a84388
@@ -158,6 +205,8 @@ SPEC CHECKSUMS:
   GoogleMobileVision: a1f93108b3527d67339e2de80e1db76645f9e8b9
   GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
   GoogleUtilities: 111a012f4c3a29c9e7c954c082fafd6ee3c999c0
+  "gRPC-C++": e76441995900ac90e9bd98644ab4733f12521edf
+  gRPC-Core: 4028031ed2c5267cca0d846c876d8046b1ecb9b6
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   Kingfisher: 2558186963e5be42d98c5b110ccb3130148b77e4
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
@@ -165,6 +214,6 @@ SPEC CHECKSUMS:
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   Toucan: 8f228fabb21521b9658692df9325fe76e71d74b2
 
-PODFILE CHECKSUM: 5f17f65c7c36035dfe7fb771de4cdf76bee0b210
+PODFILE CHECKSUM: 8e7cc07675b9703f3dd9d67e861e546412600867
 
 COCOAPODS: 1.6.0
