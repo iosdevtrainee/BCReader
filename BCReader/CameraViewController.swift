@@ -6,13 +6,17 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     @IBOutlet weak var cancel: UIButton!
     @IBOutlet weak var shutterButton: UIButton!
     @IBOutlet weak var previewLayer: AVCapturePreviewView!
-
+    @IBOutlet weak var rectanguloImage: UIImageView! = {
+        let rect = UIImageView()
+        let image = UIImage(named: "border")?.withRenderingMode(.alwaysTemplate)
+        rect.image = image
+        rect.tintColor = .white
+        rect.backgroundColor = .clear
+        return rect
+    }()
     
     @IBOutlet weak var previewView: AVCapturePreviewView!
-    
     private var avSession = AVCaptureSession()
-
-    
     private var backCamera: AVCaptureDevice?
     private var frontCamera: AVCaptureDevice?
     private var currentCamera: AVCaptureDevice?

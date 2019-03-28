@@ -20,7 +20,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CVl-3O-7oI">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" red="0.83905151180000004" green="0.86787070649999998" blue="0.90204041560000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.62563528783551914" green="0.81580076970759863" blue="0.90204041560000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ak6-Ha-p1v">
                                     <size key="itemSize" width="350" height="232"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -42,7 +42,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bqo-w4-KMx">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bqo-w4-KMx">
                                                     <rect key="frame" x="8" y="52" width="334" height="172"/>
                                                 </imageView>
                                             </subviews>
@@ -142,6 +142,7 @@
                     <connections>
                         <outlet property="cancel" destination="F4B-2g-zFp" id="hAL-wV-F1d"/>
                         <outlet property="previewLayer" destination="RtW-5x-eKh" id="Xkc-Bw-fIq"/>
+                        <outlet property="rectanguloImage" destination="S3A-og-mSq" id="RjU-GF-FS3"/>
                         <outlet property="shutterButton" destination="OzY-jU-i4m" id="5xe-so-bUi"/>
                     </connections>
                 </viewController>
