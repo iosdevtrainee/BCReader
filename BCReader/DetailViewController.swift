@@ -1,6 +1,10 @@
 import UIKit
+import CoreTelephony
+import SafariServices
+import MessageUI
 
 class DetailViewController: UITableViewController {
+    var contact = BCData(id: "", name: "Jeon", email: "je@aol.com", phoneNumber: "718-559-7789", company: "Pursuit", photoURL: URL(string: "https://google.com")!, createdAt: "", companyURL: URL(string: "https://google.com")!)
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
@@ -9,9 +13,65 @@ class DetailViewController: UITableViewController {
     
     
     
+    public func setupUI(){
+        nameLabel.text = contact.name
+        emailLabel.text = contact.email
+        phoneLabel.text = contact.phoneNumber
+        companyLabel.text = contact.company
+        
+        let websiteTapGesture = UITapGestureRecognizer(target: self, action: #selector(openContactWebsite))
+        companyLabel.addGestureRecognizer(websiteTapGesture)
+        companyLabel.isUserInteractionEnabled = true
+        
+        let phoneTapGesture = UITapGestureRecognizer(target: self, action: #selector(callContact))
+        phoneLabel.addGestureRecognizer(phoneTapGesture)
+        phoneLabel.isUserInteractionEnabled = true
+        
+        let emailTapGesture = UITapGestureRecognizer(target: self, action: #selector(EmailContact))
+        emailLabel.addGestureRecognizer(emailTapGesture)
+        emailLabel.isUserInteractionEnabled = true
+    }
+
+    @objc private func EmailContact(){
+        let mailComposeViewController = configuredMailComposeViewController()
+        if MFMailComposeViewController.canSendMail() {
+            self.present(mailComposeViewController, animated: true)
+        } else {
+            print()
+        }
+    }
+
+    @objc public func callContact(){
+        if let url = URL(string: "tel://1\(contact.phoneNumber)") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    
+    @objc public func openContactWebsite(){
+        if let url = contact.companyURL {
+            let companyWebsiteVC = SFSafariViewController(url: url)
+            present(companyWebsiteVC, animated: true)
+        }
+    }
+    
+
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self
+        mailComposerVC.setToRecipients([contact.email])
+        mailComposerVC.setSubject("")
+        mailComposerVC.setMessageBody("Hi, \(contact.name)", isHTML: false)
+        return mailComposerVC
+    }
+
+
+
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupUI()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -19,73 +79,14 @@ class DetailViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    // MARK: - Table view data source
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+}
+
+// MARK: MFMailComposeViewControllerDelegate
+
+extension DetailViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        
     }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-    
-    /*
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-     
-     // Configure the cell...
-     
-     return cell
-     }
-     */
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
 
 
