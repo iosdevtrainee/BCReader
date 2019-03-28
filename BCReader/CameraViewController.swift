@@ -13,7 +13,6 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     private var avSession = AVCaptureSession()
 
     
-    private var avSession = AVCaptureSession()
     private var backCamera: AVCaptureDevice?
     private var frontCamera: AVCaptureDevice?
     private var currentCamera: AVCaptureDevice?
@@ -35,7 +34,23 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     }
     
     @objc func cancelSelected() {
+    dismiss(animated: true)
+    }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        AppUtility.lockOrientation(.landscape)
+        // Or to rotate and lock
+        // AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Don't forget to reset when view is being removed
+        AppUtility.lockOrientation(.all)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

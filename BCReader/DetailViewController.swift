@@ -6,6 +6,7 @@ import MessageUI
 class DetailViewController: UITableViewController {
     var contact = BCData(id: "", name: "Jeon", email: "je@aol.com", phoneNumber: "718-559-7789", company: "Pursuit", photoURL: URL(string: "https://google.com")!, createdAt: "", companyURL: URL(string: "https://google.com")!)
     
+   // var contact = [BCData]()
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!

@@ -5,6 +5,9 @@
       location = "group:BCReader.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:BCReader">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
