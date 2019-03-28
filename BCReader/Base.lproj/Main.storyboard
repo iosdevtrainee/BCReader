@@ -99,38 +99,33 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RtW-5x-eKh">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4B-2g-zFp">
+                                        <rect key="frame" x="22" y="22" width="44" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Cance" image="cancel"/>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OzY-jU-i4m">
-                                        <rect key="frame" x="182" y="746" width="50" height="50"/>
+                                        <rect key="frame" x="322" y="350" width="70" height="70"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="0CH-mH-8WL"/>
-                                            <constraint firstAttribute="width" constant="50" id="Cqg-EU-tuy"/>
+                                            <constraint firstAttribute="height" constant="70" id="23c-ud-1Gp"/>
+                                            <constraint firstAttribute="width" constant="70" id="E2u-r7-c6x"/>
                                         </constraints>
                                         <state key="normal" image="circle"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4B-2g-zFp">
-                                        <rect key="frame" x="22" y="22" width="44" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="9gY-mc-8hv"/>
-                                            <constraint firstAttribute="width" constant="44" id="wM0-l9-6qw"/>
-                                        </constraints>
-                                        <state key="normal" title="Cance" image="cancel"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="OzY-jU-i4m" firstAttribute="centerX" secondItem="RtW-5x-eKh" secondAttribute="centerX" id="CUl-Lq-jFl"/>
-                                    <constraint firstItem="F4B-2g-zFp" firstAttribute="leading" secondItem="RtW-5x-eKh" secondAttribute="leading" constant="22" id="GQg-SV-9lA"/>
-                                    <constraint firstAttribute="bottom" secondItem="OzY-jU-i4m" secondAttribute="bottom" constant="22" id="QQw-oG-IgQ"/>
-                                    <constraint firstItem="F4B-2g-zFp" firstAttribute="top" secondItem="RtW-5x-eKh" secondAttribute="top" constant="22" id="SbF-Q3-edU"/>
+                                    <constraint firstItem="OzY-jU-i4m" firstAttribute="top" secondItem="RtW-5x-eKh" secondAttribute="top" constant="350" id="FB3-dn-LqG"/>
+                                    <constraint firstAttribute="trailing" secondItem="OzY-jU-i4m" secondAttribute="trailing" constant="22" id="W2Y-XO-LVn"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="RtW-5x-eKh" firstAttribute="bottom" secondItem="tzG-bl-A0m" secondAttribute="bottom" id="0fP-AQ-8kL"/>
-                            <constraint firstAttribute="trailing" secondItem="RtW-5x-eKh" secondAttribute="trailing" id="B74-lk-s0d"/>
-                            <constraint firstItem="RtW-5x-eKh" firstAttribute="leading" secondItem="WDi-mb-hXu" secondAttribute="leading" id="G7r-8x-AUI"/>
-                            <constraint firstItem="RtW-5x-eKh" firstAttribute="top" secondItem="tzG-bl-A0m" secondAttribute="top" id="xnd-5I-0Ka"/>
+                            <constraint firstAttribute="trailing" secondItem="RtW-5x-eKh" secondAttribute="trailing" id="1Ez-rU-PlR"/>
+                            <constraint firstItem="RtW-5x-eKh" firstAttribute="top" secondItem="tzG-bl-A0m" secondAttribute="top" id="MQp-bK-aTw"/>
+                            <constraint firstItem="RtW-5x-eKh" firstAttribute="bottom" secondItem="tzG-bl-A0m" secondAttribute="bottom" id="RgO-f9-gJl"/>
+                            <constraint firstItem="RtW-5x-eKh" firstAttribute="leading" secondItem="WDi-mb-hXu" secondAttribute="leading" id="gbw-95-Y65"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tzG-bl-A0m"/>
                     </view>
