@@ -11,7 +11,8 @@ struct BCDataKeys {
   static let PhoneNumber = "number"
   static let PhotoURLKey = "photoURL"
   static let CreatedAt = "createdAt"
-static let Company = "company"
+  static let Company = "company"
+  static let CompanyURLKey = "companyURL"
 }
 
 
@@ -49,6 +50,17 @@ final class DBService {
       }
     }
   }
+    public static func fetchAllContacts(completion:@escaping([BCData]?, Error?) -> Void){
+        firestoreDB.collection(BCDataKeys.CollectionKey).addSnapshotListener { (snapshot, error) in
+            if let error = error {
+                completion(nil, error)
+            } else if let snapshot = snapshot {
+                let contacts = snapshot.documents.map { BCData(document: $0.data())}
+                completion(contacts, nil)
+            }
+        }
+    }
+    
   
 //  static public func postReview(review: BCData) {
 //    firestoreDB.collection(BCDataKeys.CollectionKey)
