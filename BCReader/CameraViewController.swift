@@ -4,9 +4,11 @@ import AVFoundation
 class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     
     @IBOutlet weak var cancel: UIButton!
-  
     @IBOutlet weak var shutterButton: UIButton!
     @IBOutlet weak var previewLayer: AVCapturePreviewView!
+    
+    @IBOutlet weak var previewView: AVCapturePreviewView!
+    
     private var avSession = AVCaptureSession()
     
     private var backCamera: AVCaptureDevice?
@@ -21,9 +23,9 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configurePreview(view: previewLayer)
-        self.cancel.addTarget(self, action: (cancelSelected), for: .touchUpInside)
-        self.shutterButton.addTarget(self, action:(takePhoto) , for: .touchUpInside)
+        configurePreview(view: previewView)
+        self.cancel.addTarget(self, action: #selector(cancelSelected), for: .touchUpInside)
+        self.shutterButton.addTarget(self, action:#selector(takePhoto) , for: .touchUpInside)
     }
     
     @objc func cancelSelected() {
@@ -32,7 +34,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         let orientation = UIDevice.current.orientation
-        let connection = previewLayer.avPreviewLayer.connection
+        let connection = previewView.videoPreviewLayer.connection
         
         guard let videoOrientation = AVCaptureVideoOrientation(deviceOrientation: orientation)
             else { return }
@@ -107,10 +109,13 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     
     // AVCapturePhotoCaptureDelegate methods. This extension is used because you need to wait until the photo you took "didFinishProcessing" before you can handle the image.
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-        if let imageData = photo.fileDataRepresentation() {
-            
-            guard let image = UIImage(data: imageData)
-                else { return }
+        if let imageData = photo.fileDataRepresentation(),
+            let image = UIImage(data: imageData) {
+            let storyboard = UIStoryboard(name: "Save", bundle: nil)
+            let saveVC = storyboard.instantiateViewController(withIdentifier: "SaveVC") as! SaveViewController
+            saveVC.image = image
+            VisionService.readText(image: image)
+//            present(saveVC, animated: true)
 
         }
     }
@@ -159,9 +164,9 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     // This function creates a layer in the view that will enable a live feed of what your camera is observing.
     private func setupPreviewLayer(view: AVCapturePreviewView){
         if let orientation = videoOrientation {
-        view.avPreviewLayer.session = avSession
-        view.avPreviewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        view.avPreviewLayer.connection?.videoOrientation = orientation
+            view.videoPreviewLayer.session = avSession
+            view.videoPreviewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+            view.videoPreviewLayer.connection?.videoOrientation = orientation
         }
     }
     

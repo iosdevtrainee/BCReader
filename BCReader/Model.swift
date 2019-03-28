@@ -1,7 +1,7 @@
 import Foundation
 
 struct BCData {
-    var id: String 
+    var id: String
     var name: String
     var email: String
     var phoneNumber: String
@@ -10,7 +10,7 @@ struct BCData {
     var createdAt: String
     var companyURL: URL?
     
-    static var contactDateFormat = ""
+    static var contactDateFormat = "MMM d, yyyy hh:mm a"
     init(document:[String: Any]) {
         self.id = document[BCDataKeys.BCDIdKey] as? String ?? ""
         self.name = document[BCDataKeys.NameKey] as? String ?? ""
@@ -22,7 +22,7 @@ struct BCData {
         self.createdAt = document[BCDataKeys.CreatedAt] as? String ?? ""
         let companyURLString = document[BCDataKeys.CompanyURLKey] as? String ?? ""
         self.companyURL = URL(string: companyURLString)
-    
+        
     }
     
     init(id:String, name:String,
@@ -39,6 +39,7 @@ struct BCData {
         self.companyURL = companyURL
     }
 }
+
 
 
 

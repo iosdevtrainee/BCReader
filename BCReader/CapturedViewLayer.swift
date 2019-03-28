@@ -6,5 +6,12 @@ class AVCapturePreviewView: UIView {
         return AVCaptureVideoPreviewLayer.self
     }
     
-    var avPreviewLayer: AVCaptureVideoPreviewLayer { return layer as! AVCaptureVideoPreviewLayer }
+    var videoPreviewLayer: AVCaptureVideoPreviewLayer {
+        guard let layer = layer as? AVCaptureVideoPreviewLayer else {
+            fatalError("")
+        }
+        
+        return layer
+    }
+
 }
