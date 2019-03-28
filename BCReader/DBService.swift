@@ -38,7 +38,7 @@ final class DBService {
       .setData([ BCDataKeys.CollectionKey : reviewer.id,
                                             BCDataKeys.EmailKey       : reviewer.email,
                                             BCDataKeys.NameKey : reviewer.name,
-                                            BCDataKeys.PhotoURLKey    : reviewer.photoURL ?? "",
+                                            BCDataKeys.PhotoURLKey    : reviewer.photoURL?.absoluteString ?? "",
                                             BCDataKeys.CreatedAt  : reviewer.createdAt,
                                             BCDataKeys.PhoneNumber: reviewer.phoneNumber,
                                             BCDataKeys.Company: reviewer.company

@@ -1,16 +1,18 @@
 import UIKit
-import CoreTelephony
 import SafariServices
 import MessageUI
 
 class DetailViewController: UITableViewController {
-    var contact = BCData(id: "", name: "Jeon", email: "je@aol.com", phoneNumber: "718-559-7789", company: "Pursuit", photoURL: URL(string: "https://google.com")!, createdAt: "", companyURL: URL(string: "https://google.com")!)
+    var contact = BCData(id: "", name: "Jeon", email: "je@aol.com", phoneNumber: "718-559-7789", company: "Pursuit", photoURL: URL(string: "https://google.com")!, createdAt: "12/18/2018", companyURL: URL(string: "https://google.com")!)
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var companyLabel: UILabel!
-    
+    @IBOutlet weak var companyURLCell: UITableViewCell!
+    @IBOutlet weak var companyURLLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var bcImageView: UIImageView!
     
     
     public func setupUI(){
@@ -18,15 +20,29 @@ class DetailViewController: UITableViewController {
         emailLabel.text = contact.email
         phoneLabel.text = contact.phoneNumber
         companyLabel.text = contact.company
-        
+        companyURLCell.isHidden = contact.companyURL == nil
+        companyURLLabel.text = contact.companyURL?.absoluteString
+        dateLabel.text = contact.createdAt
+        bcImageView.image = UIImage(named: "phi. mage")
+        setupTappableLink(label: companyURLLabel)
+        setupTappablePhoneNumber(label: phoneLabel)
+        setupTappableEmail(label: emailLabel)
+    }
+    
+    private func setupTappableLink(label:UILabel){
         let websiteTapGesture = UITapGestureRecognizer(target: self, action: #selector(openContactWebsite))
-        companyLabel.addGestureRecognizer(websiteTapGesture)
-        companyLabel.isUserInteractionEnabled = true
+        label.addGestureRecognizer(websiteTapGesture)
+        label.isUserInteractionEnabled = true
         
+    }
+    
+    private func setupTappablePhoneNumber(label:UILabel){
         let phoneTapGesture = UITapGestureRecognizer(target: self, action: #selector(callContact))
-        phoneLabel.addGestureRecognizer(phoneTapGesture)
-        phoneLabel.isUserInteractionEnabled = true
-        
+        label.addGestureRecognizer(phoneTapGesture)
+        label.isUserInteractionEnabled = true
+    }
+    
+    private func setupTappableEmail(label:UILabel){
         let emailTapGesture = UITapGestureRecognizer(target: self, action: #selector(EmailContact))
         emailLabel.addGestureRecognizer(emailTapGesture)
         emailLabel.isUserInteractionEnabled = true
@@ -72,6 +88,9 @@ class DetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        let headerView = HeaderView()
+        headerView.bcImageView.image = UIImage(named: "phimage")
+        tableView.tableHeaderView = headerView
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         

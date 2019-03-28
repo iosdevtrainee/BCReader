@@ -29,7 +29,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     }
     
     @objc func cancelSelected() {
-    
+        dismiss(animated: true)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -114,11 +114,13 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
             let storyboard = UIStoryboard(name: "Save", bundle: nil)
             let saveVC = storyboard.instantiateViewController(withIdentifier: "SaveVC") as! SaveViewController
             saveVC.image = image
-            VisionService.readText(image: image)
-//            present(saveVC, animated: true)
-
+            VisionService.readText(image: image) { [weak self] (cardInfo:CardInfo?) in
+                saveVC.cardInfo = cardInfo
+                self?.navigationController?.pushViewController(saveVC, animated: true)
+            }
         }
     }
+
     
     // Mark:- AVCapture Session Setup functions
     // This function sets up the photo capture session as well as the photo ouput instance and its settings.

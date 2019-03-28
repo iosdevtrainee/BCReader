@@ -1,7 +1,8 @@
 import UIKit
 
 class SaveViewController: UITableViewController {
-    public var image: UIImage! 
+    public var image: UIImage!
+    public var cardInfo: CardInfo!
     @IBOutlet weak var companyTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var telephoneTextField: UITextField!
@@ -13,6 +14,14 @@ class SaveViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bcimageView.image = image
+        setupUI()
+    }
+    
+    private func setupUI(){
+        companyTextField.text = cardInfo?.company
+        nameTextField.text = cardInfo?.name
+        telephoneTextField.text = cardInfo?.phone
+        emailTextField.text = cardInfo?.email
     }
     
     private func storeImage() {
