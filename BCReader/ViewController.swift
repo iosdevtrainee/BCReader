@@ -4,11 +4,17 @@ import FirebaseMLVision
 
 class ViewController: UIViewController {
     
+    
+    
     var contacts = [BCData]() {
         didSet {
             tableView.reloadData()
         }
     }
+    
+    var cellSpacing: CGFloat = 10.0
+    var numberOfSpaces: CGFloat = 2.0
+    var numberOfCells: CGFloat = 1.0
     @IBOutlet weak var tableView: UICollectionView!
     
     override func viewDidLoad() {
@@ -50,7 +56,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         let contactData = contacts[indexPath.row]
         cell.bcImage.kf.setImage(with: URL(string: (contactData.photoURL?.absoluteString)!))
         cell.nameLabel.text = contactData.name
-        //cell.nameLabel.text = "Test"
+   
         return cell
       
     }
@@ -67,7 +73,25 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 400, height: 730)
+        let screenWidth = UIScreen.main.bounds.width
+        let screenHeight = UIScreen.main.bounds.height
+        let width = (screenWidth - (cellSpacing * numberOfSpaces)) / numberOfCells
+        let height = (screenWidth / screenHeight) * width
+
+        return CGSize(width: width , height: height)
         
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: self.cellSpacing, left: self.cellSpacing, bottom: self.cellSpacing, right: self.cellSpacing)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return self.cellSpacing
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return self.cellSpacing
     }
 }
