@@ -56,7 +56,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard.init(name: "Detaile", bundle: nil)
+        let storyboard = UIStoryboard.init(name: "Detail", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
        let contactData = contacts[indexPath.row]
         viewController.contact = contactData

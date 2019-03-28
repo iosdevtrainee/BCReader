@@ -40,7 +40,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        AppUtility.lockOrientation(.portrait)
+        AppUtility.lockOrientation(.landscape)
         // Or to rotate and lock
         // AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
         
