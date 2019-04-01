@@ -10,4 +10,11 @@
 
 ##### How to use: 
 
-###### (**giphs go here** )
+###### (giphs go here)
+
+##### BC Reader uses: 
+- Firebase MLKit Vission
+- Firebase Storage 
+- Firebase Cloud Firestore 
+
+
