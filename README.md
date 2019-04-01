@@ -8,4 +8,6 @@
 
 #### Who to use: 
 
-##### 1.- Snap a picture 
+##### How to use: 
+
+###### (**giphs go here** )
