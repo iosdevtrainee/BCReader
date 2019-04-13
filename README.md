@@ -13,7 +13,7 @@
 ###### (giphs go here)
 
 ##### BC Reader uses: 
-- Firebase MLKit Vission
+- Firebase MLKit Vision
 - Firebase Storage 
 - Firebase Cloud Firestore 
 
